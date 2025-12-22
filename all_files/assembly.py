@@ -4,7 +4,7 @@
 
 import assemblyai as aai
 
-aai.settings.api_key = "placeholder"
+aai.settings.api_key = "12d38a465e2648889e760ef08a15ca12"
 
 # audio_file = "./local_file.mp3"
 audio_file = "https://assembly.ai/wildfires.mp3"

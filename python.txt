@@ -1,0 +1,9 @@
+import numpy as np
+x, y = map(int, input("Enter shape of array eg 4, 5: ").replace(' ', '').split(","))
+arr = np.zeros(shape=(x, y))
+
+for row in range(x):
+    for col in range(y):
+        arr[row][col] = row * col
+
+print("\n", arr, "\n\n\t\tExplanation: \nFor each element in the array, it's value is it's row * col value. \nFor example the first one zero is coz row(zero) * col(all) == 0")

@@ -19,63 +19,50 @@ import random
 def rockpaperscissors():
 	computer, person = 0, 0
 	r, p, s = "🪨", "📃", "✂️"
-	lst = [r, p, s]
 	while computer + person < 5:
-		c_choice = random.choice(lst)
+		c_choice = random.choice([r, p, s])
 		while True: # Checks if it's r, p or s, then assigns them to the emoji.
 			choice = input("r/p/s: ").lower()
 			if choice == 'r':
 				choice = r
 				break
-			if choice == 'p':
+			elif choice == 'p':
 				choice = p
 				break
-			if choice == 's':
+			elif choice == 's':
 				choice = s
 				break
 			else:
 				continue
 		
 		# Checks who the winner is and adds one to their score.
-		if c_choice == r and choice == p:
-			person += 1
-			print(f'You chose {choice}, computer chose {c_choice}')
-			print('You win this round!')
-		if c_choice == p and choice == s:
-			person += 1
-			print(f'You chose {choice}, computer chose {c_choice}')
-			print('You win this round!')
-		if c_choice == s and choice == r:
-			person += 1
-			print(f'You chose {choice}, computer chose {c_choice}')
-			print('You win this round!')
-		if c_choice == choice:
-			print(f'You chose {choice}, computer chose {c_choice}')
+		print(f'You chose {choice}, computer chose {c_choice}')
+		winning_rules = {r: s, p: r, s: p} 
+
+		if choice == c_choice:
 			print('Draw')
-		if choice == r and c_choice == p:
+		elif winning_rules[choice] == c_choice: # If whatever "choice" beats is computer's choice then the person wins.
+			person += 1
+			print('You win this round!')
+		else:
 			computer += 1
-			print(f'You chose {choice}, computer chose {c_choice}')
-			print('Computer wins this round!')
-		if choice == p and c_choice == s:
-			computer += 1
-			print(f'You chose {choice}, computer chose {c_choice}')
-			print('Computer wins this round!')
-		if choice == s and c_choice == r:
-			computer += 1
-			print(f'You chose {choice}, computer chose {c_choice}')
 			print('Computer wins this round!')
 		
 		# check is the user wants to play again.
-		decide = input("Would you like to try again(y/n) ")
-		if decide == 'y':
+		try:
+			decide = input("Press 'n' to stop, any key continue: ")
+			if decide == 'n':
+				break
+			else:
+				continue
+		except:
 			continue
-		if decide == 'n':
-			break
 	
+	print("Game Over!")
 	print(f'You won {person} times, computer won {computer} times!')
 	if person > computer:
 		print("Congrats! You win!")
-	if person == computer:
+	elif person == computer:
 		print("Draw!")
 	else:
 		print('Computer wins!')

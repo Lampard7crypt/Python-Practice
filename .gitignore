@@ -3,7 +3,6 @@ __pycache__
 .vscode
 *.jpeg
 *.jpg
-*.ipynb
 webdev
 portfolio
 CS50 project
